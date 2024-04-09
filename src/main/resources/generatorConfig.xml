@@ -1,0 +1,62 @@
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <properties resource="config.properties"/>
+    <classPathEntry
+            location="${mysql-jar-location}"/>
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+            <property name="caseSensitive" value="true"/>
+        </plugin>
+
+        <!-- 自定义插件，自动为entity生成swagger2文档-->
+        <plugin type="com.tang.generator.MybatisGenerator">
+            <property name="apiModelAnnotationPackage" value="io.swagger.annotations.ApiModel"/>
+            <property name="apiModelPropertyAnnotationPackage" value="io.swagger.annotations.ApiModelProperty"/>
+            <property name="lombokDataAnnotationPackage" value="lombok.Data"/>
+        </plugin>
+
+        <jdbcConnection driverClass="${jdbc.driverClass}"
+                connectionURL="${jdbc.url}"
+                userId="${jdbc.user}"
+                password="${jdbc.password}">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="${modelTargetPackage}"
+                targetProject="src/main/java"/>
+
+        <sqlMapGenerator targetPackage="${sqlMapTargetPackage}"
+                targetProject="src/main/resources"/>
+
+        <javaClientGenerator targetPackage="${daoTargetPackage}"
+                targetProject="src/main/java"
+                type="XMLMAPPER"/>
+
+
+        <table tableName="environment">
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+        </table>
+        <table tableName="global_config">
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+        </table>
+        <table tableName="project">
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+        </table>
+        <table tableName="project_role">
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+        </table>
+        <table tableName="test_case">
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+        </table>
+        <table tableName="user">
+            <generatedKey column="id" sqlStatement="mysql" identity="true"/>
+        </table>
+
+
+    </context>
+</generatorConfiguration>

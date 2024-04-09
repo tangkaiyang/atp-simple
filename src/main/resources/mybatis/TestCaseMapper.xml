@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tang.atpsimple.dao.mapper.TestCaseMapper">
+  <resultMap id="BaseResultMap" type="com.tang.atpsimple.dao.po.TestCase">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="request_type" jdbcType="INTEGER" property="requestType" />
+    <result column="request_method" jdbcType="VARCHAR" property="requestMethod" />
+    <result column="project_id" jdbcType="INTEGER" property="projectId" />
+    <result column="tag" jdbcType="VARCHAR" property="tag" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="priority" jdbcType="VARCHAR" property="priority" />
+    <result column="catalogue" jdbcType="VARCHAR" property="catalogue" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+    <result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt" />
+    <result column="create_user" jdbcType="INTEGER" property="createUser" />
+    <result column="update_user" jdbcType="INTEGER" property="updateUser" />
+    <result column="url" jdbcType="LONGVARCHAR" property="url" />
+    <result column="request_header" jdbcType="LONGVARCHAR" property="requestHeader" />
+    <result column="body" jdbcType="LONGVARCHAR" property="body" />
+  </resultMap>
+</mapper>

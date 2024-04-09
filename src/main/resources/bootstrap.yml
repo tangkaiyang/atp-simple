@@ -1,0 +1,56 @@
+#开发/测试/生产环境分别对应dev/test/pro
+#基础配置保存在application.yml中，因环境会变更的配置保存在对应的application-xxx.yml中
+server:
+    port: 8083
+    servlet:
+        context-path: /
+        session:
+            cookie:
+                http-only: true
+                secure: false
+                path: /
+    tomcat:
+        protocol-header: X-Forwarded-Proto
+        remote-ip-header: X-Forwarded-For
+        max-threads: 300
+
+spring:
+    swagger:
+        enable: true        #为true时将开启swagger
+
+    profiles:
+        active: dev
+    application:
+        name: atp-simple    # 项目名称尽量用小写(不能访问)
+    jackson:
+        dateFormat: yyyy-MM-dd HH:mm:ss
+        timeZone: GMT+8
+    servlet:
+        multipart:
+            max-file-size: 10MB
+            max-request-size: 10MB
+    #session使用redis进行储存
+    session:
+        store-type: REDIS
+    data:
+        redis:
+            repositories:
+                enabled: false
+
+mybatis:
+    mapper-locations: classpath*:mybatis/*.xml
+    type-aliases-package: com.tang.atpsimple.dao.po
+
+#pagehelper
+pagehelper:
+    helperDialect: mysql
+    reasonable: false
+    supportMethodsArguments: true
+    params: count=countSql
+
+
+
+
+
+#session的过期时间
+sessioninvalid: 3600
