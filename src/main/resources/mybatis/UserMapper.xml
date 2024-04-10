@@ -1,19 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.tang.atpsimple.dao.mapper.UserMapper">
-  <resultMap id="BaseResultMap" type="com.tang.atpsimple.dao.po.User">
-    <!--
-      WARNING - @mbg.generated
-    -->
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="role" jdbcType="INTEGER" property="role" />
-    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
-    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
-    <result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt" />
-    <result column="last_login_at" jdbcType="TIMESTAMP" property="lastLoginAt" />
-  </resultMap>
+    <resultMap id="BaseResultMap" type="com.tang.atpsimple.dao.po.User">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="role" jdbcType="INTEGER" property="role"/>
+        <result column="created_at" jdbcType="TIMESTAMP" property="createdAt"/>
+        <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt"/>
+        <result column="deleted_at" jdbcType="TIMESTAMP" property="deletedAt"/>
+        <result column="last_login_at" jdbcType="TIMESTAMP" property="lastLoginAt"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, username, name, password, email, role, created_at, update_at, deleted_at, last_login_at
+    </sql>
+
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.tang.atpsimple.dao.po.User"
+            useGeneratedKeys="true">
+        insert into user (username, name, password, email, role, created_at, updated_at, deleted_at, last_login_at)
+        values (#{username, jdbcType=VARCHAR}, #{name, jdbcType=VARCHAR}, #{password, jdbcType=VARCHAR},
+        #{email, jdbcType=VARCHAR}, #{role, jdbcType=INTEGER},
+        #{createdAt, jdbcType=TIMESTAMP},#{updatedAT, jdbcType=TIMESTAMP},#{deletedAT, jdbcType=TIMESTAMP},
+        #{lastLoginAt, jdbcType=TIMESTAMP})
+    </insert>
 </mapper>
