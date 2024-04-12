@@ -1,5 +1,6 @@
 package com.tang.atpsimple.web.controller;
 
+import com.tang.atpsimple.common.exception.ServiceException;
 import com.tang.atpsimple.common.response.ReturnResponse;
 import com.tang.atpsimple.web.request.UserRequest;
 import com.tang.atpsimple.web.service.UserService;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import javax.xml.ws.Service;
 
 
 /**
@@ -26,7 +29,12 @@ public class UserController {
     @PostMapping(value = "add.do")
     @ResponseBody
     public ReturnResponse add(@Validated @RequestBody UserRequest userRequest) {
-        int res = userService.save(userRequest);
-        return ReturnResponse.success(res);
+        try {
+            int res = userService.save(userRequest);
+            return ReturnResponse.success(res);
+        }catch (ServiceException e) {
+            return new ReturnResponse<>(e.getCode(), e.getMessage());
+        }
+
     }
 }

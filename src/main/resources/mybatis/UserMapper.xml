@@ -24,9 +24,9 @@
     <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.tang.atpsimple.dao.po.User"
             useGeneratedKeys="true">
         insert into user (username, name, password, email, role, created_at, updated_at, deleted_at, last_login_at)
-        values (#{username, jdbcType=VARCHAR}, #{name, jdbcType=VARCHAR}, #{password, jdbcType=VARCHAR},
-        #{email, jdbcType=VARCHAR}, #{role, jdbcType=INTEGER},
-        #{createdAt, jdbcType=TIMESTAMP},#{updatedAT, jdbcType=TIMESTAMP},#{deletedAT, jdbcType=TIMESTAMP},
-        #{lastLoginAt, jdbcType=TIMESTAMP})
+        values (#{user.username, jdbcType=VARCHAR}, #{user.name, jdbcType=VARCHAR}, #{user.password, jdbcType=VARCHAR},
+        #{user.email, jdbcType=VARCHAR}, #{user.role, jdbcType=INTEGER},
+        #{user.createdAt, jdbcType=TIMESTAMP},#{user.updatedAt, jdbcType=TIMESTAMP},#{user.deletedAt, jdbcType=TIMESTAMP},
+        #{user.lastLoginAt, jdbcType=TIMESTAMP})
     </insert>
 </mapper>

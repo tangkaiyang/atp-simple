@@ -3,7 +3,6 @@ package com.tang.atpsimple.web.request;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
-import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.*;
 import java.util.Date;
@@ -15,7 +14,7 @@ public class UserRequest {
 
     @ApiModelProperty(value = "", name = "username")
     @NotBlank(message = "用户名称不能为空")
-    @Length(max = 16, message = "用户名称过长")
+    @Size(max = 16, message = "用户名称过长")
     private String username;
 
     @ApiModelProperty(value = "", name = "name")

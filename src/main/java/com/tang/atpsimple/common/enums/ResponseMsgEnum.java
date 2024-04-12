@@ -38,8 +38,9 @@ public enum ResponseMsgEnum {
     CODE_540(540, "redis服务异常"),
     CODE_550(550, "ES服务异常"),
 
+    CODE_900(900, "平台业务异常，请稍后重试"),
 
-    //统一登录接口-end
+
     CODE_999999(999999, "系统未知异常"),
 
     ;

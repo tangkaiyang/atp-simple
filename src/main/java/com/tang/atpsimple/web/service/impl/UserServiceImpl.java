@@ -20,6 +20,7 @@ public class UserServiceImpl implements UserService {
     public int save(UserRequest userRequest) {
         User user = BeanUtils.copy(userRequest, User.class);
         user.setCreatedAt(new Date());
+        user.setUpdatedAt(new Date());
         return userMapper.insert(user);
     }
 }
